@@ -1,1 +1,0 @@
-SmartSlice 0.1.2 Windows build. Upload contents including .github/workflows/build-windows.yml to your GitHub repository, commit to main, then use Actions. Dependency fix: networkx. Smoke test checks Python export dependencies; it does not execute the frozen Windows GUI or validate Bambu Studio compatibility. Existing 3MF metadata is not preserved. No internet calls from app.
