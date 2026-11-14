@@ -1,0 +1,30 @@
+name: Build SmartSlice Windows EXE
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  test-and-build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+      - name: Install PyInstaller
+        run: python -m pip install -r requirements.txt
+      - name: Build standalone EXE
+        run: python -m PyInstaller --noconfirm --clean --onefile --windowed --name SmartSlice_0.1.5 smartslice_0_1_5.py
+      - name: Check executable exists
+        shell: pwsh
+        run: |
+          if (!(Test-Path "dist/SmartSlice_0.1.5.exe")) { throw "EXE missing" }
+      - name: Upload executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: SmartSlice_0.1.5_Windows
+          path: dist/SmartSlice_0.1.5.exe
