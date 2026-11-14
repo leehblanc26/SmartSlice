@@ -1,11 +1,11 @@
-SmartSlice 0.1.4 — Windows build package
+SmartSlice 0.1.5 — Windows build package
 
 Upload these files and the .github/workflows/build-windows.yml workflow
 to your existing GitHub repository (preserve directory structure).
 Go to Actions > Build SmartSlice Windows EXE > Run workflow.
-Download the SmartSlice_0.1.4_Windows artifact and extract its EXE.
+Download the SmartSlice_0.1.5_Windows artifact and extract its EXE.
 
-0.1.4 scope:
+0.1.5 scope:
 - Bambu Studio 3MF project files only; no STL import.
 - No trimesh, geometry inspection, rotation, scaling, or repair.
 - Only existing project_settings.config JSON keys are modified.
@@ -27,3 +27,5 @@ LIMITATIONS:
 Testing:
 python -m unittest discover -s tests -v
 GitHub Actions runs tests before building the EXE.
+
+File dialog now includes All files (*.*). If the file is visible only under All files, verify its actual extension.
